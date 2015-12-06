@@ -1,0 +1,34 @@
+# Shortcuts
+
+alias g="git"
+alias v="vim"
+alias rr="rm -rf"
+
+# List declared aliases, functions
+
+alias listaliases="alias | sed 's/=.*//'"
+alias listfunctions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'" # show non _prefixed functions
+
+# cd
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# docker
+
+alias ds='/Applications/Docker/Docker\ Quickstart\ Terminal.app/Contents/Resources/Scripts/start.sh' # Start a docker vm
+alias dl="docker ps -l -q"       # Get latest container ID
+alias dps="docker ps"            # Get container process
+alias dpa="docker ps -a"         # Get process included stop container
+alias di="docker images"         # Get images
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"  # Get container IP
+alias dkd="docker run -d -P"     # Run deamonized container, e.g., $dkd base /bin/echo hello
+alias dki="docker run -i -t -P"  # Run interactive container, e.g., $dki base /bin/bash
+alias dex="docker exec -i -t"    # Execute interactive container, e.g., $dex base /bin/bash
+alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'   # Stop and Remove all containers
+
+# Miscellaneous
+
+alias quit="exit"
+alias lo="exit"
