@@ -15,5 +15,4 @@ My dotfiles.
 ## Credits
 
 The majority of this is copied from [webpro](http://github.com/webpro/dotfiles/)
-
 My vimrc largely comes from [sjl](http://bitbucket.org/sjl/dotfiles/src/tip/vim/)
