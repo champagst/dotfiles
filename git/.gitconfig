@@ -1,0 +1,10 @@
+[user]
+   name = Steve Champagne
+   email = champagst@gmail.com
+
+[github]
+   user = ggeise
+
+[core]
+   excludesfile = ~/.gitignore_global
+   editor = vim

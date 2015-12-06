@@ -1,0 +1,27 @@
+" .pentadactylrc
+" Author: Steve Champagne <champagst@gmail.com>
+" Source: http://
+
+" FASTER PLEASE
+nmap -builtin -silent j 3j
+nmap -builtin -silent k 3k
+
+" I never use marks, but always use quickmarks.
+nmap -builtin "'" go
+nmap -builtin '"' gn
+
+" Switch tabs with parens
+nmap -builtin ) :tn<CR>
+nmap -builtin ( :tp<CR>
+
+" Shift is hard.
+nmap -builtin ; :
+
+" Highlight all search matches, not just the first.
+set hlfind
+
+" Clear search highlighting and normal highlighting.
+nmap -builtin ,<space> <esc>:noh<CR>
+
+" Shut up.
+javascript dactyl.beep = function() { return false; }
