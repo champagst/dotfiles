@@ -1,0 +1,22 @@
+" General
+
+javascript dactyl.beep = function() { return false; }
+
+" Key mappings
+
+nmap -builtin -silent j 3j    " Scroll up faster
+nmap -builtin -silent k 3k    " Scroll down faster
+
+nmap -builtin "'" go          " Jump to quickmark in current tab (Instead of mark)
+nmap -builtin '"' gn          " Jump to quickmark in new tab
+
+nmap -builtin ) :tn<CR>       " Next tab
+nmap -builtin ( :tp<CR>       " Previous tab
+
+nmap -builtin ; :<CR>         " Use ; over : for commands
+
+" Search
+
+set hlfind
+
+nmap -builtin ,<space> <esc>:noh<CR>
