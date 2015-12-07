@@ -8,3 +8,11 @@
 [core]
    excludesfile = ~/.gitignore_global
    editor = vim
+
+[alias]
+   aa = add --all
+   st = status
+   ci = commit
+   br = branch
+   co = checkout
+   unstage = reset --hard HEAD
