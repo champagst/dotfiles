@@ -1,22 +1,38 @@
-" General
+" Scroll up faster
+nmap -builtin -silent j 3j
 
-javascript dactyl.beep = function() { return false; }
+" Scroll down faster
+nmap -builtin -silent k 3k
 
-" Key mappings
+" Jump to quickmark in current tab (Instead of mark)
+nmap -builtin "'" go
 
-nmap -builtin -silent j 3j    " Scroll up faster
-nmap -builtin -silent k 3k    " Scroll down faster
+" Jump to quickmark in new tab
+nmap -builtin '"' gn
 
-nmap -builtin "'" go          " Jump to quickmark in current tab (Instead of mark)
-nmap -builtin '"' gn          " Jump to quickmark in new tab
+" Next tab
+nmap -builtin ) :tn<CR>
 
-nmap -builtin ) :tn<CR>       " Next tab
-nmap -builtin ( :tp<CR>       " Previous tab
+" Previous tab
+nmap -builtin ( :tp<CR>
 
-nmap -builtin ; :<CR>         " Use ; over : for commands
+" Use ; over : for commands
+nmap -builtin ; :
 
-" Search
+" Close tab
+nmap -builtin x d
+
+" Scroll down
+nmap -builtin d <C-d>
+
+" Scroll up
+nmap -builtin u <C-u>
+
+" Prevent x on the last tab from closing the window
+:set! browser.tabs.closeWindowWithLastTab=false
 
 set hlfind
 
 nmap -builtin ,<space> <esc>:noh<CR>
+
+javascript dactyl.beep = function() { return false; }
