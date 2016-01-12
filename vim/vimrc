@@ -75,3 +75,7 @@ filetype plugin indent on
 
 nmap <leader>n :NERDTreeToggle<cr>
 let NERDTreeShowHidden=1
+
+" CtrlP
+
+nmap <leader>m :CtrlP<cr>
