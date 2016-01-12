@@ -15,4 +15,10 @@ ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 
-ln -sfv "$DOTFILES_DIR/pentadactyl/pentadactylrc" ~/.pentadactylrc
+if [ "$(uname)" == "Darwin" ]; then
+	ln -sfv "$DOTFILES_DIR/pentadactyl/pentadactylrc" ~/.pentadactylrc
+fi
+
+if [ "$(uname)" == "Linux" ]; then
+	ln -sfv "$DOTFILES_DIR/vim/vimrc" ~/.vimrc
+fi
