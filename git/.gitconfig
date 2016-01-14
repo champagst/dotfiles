@@ -16,7 +16,3 @@
    br = branch
    co = checkout
    unstage = reset --hard HEAD
-[http]
-	proxy = $HTTP_PROXY
-[https]
-	proxy = $HTTPS_PROXY
