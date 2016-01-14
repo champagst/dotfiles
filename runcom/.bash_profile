@@ -25,7 +25,7 @@ for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,env,prompt,alias}; d
     [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
-[ -f "$HOME/.work" ] && "$HOME/.work"
+[ -f "$HOME/.work" ] && . "$HOME/.work"
 
 # Clean up
 
