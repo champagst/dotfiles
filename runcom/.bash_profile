@@ -21,9 +21,11 @@ fi
 
 # Finally we can source the dotfiles (order matters)
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,env,prompt,alias,work}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,env,prompt,alias}; do
     [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
+
+[ -f "$HOME/.work" ] && "$HOME/.work"
 
 # Clean up
 
