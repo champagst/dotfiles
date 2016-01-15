@@ -59,6 +59,11 @@ set hlsearch
 
 noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 
+" Buffers
+
+nnoremap <C-n> :bnext<cr>
+nnoremap <C-p> :bprevious<cr>
+
 " Colors
 
 syntax on 
