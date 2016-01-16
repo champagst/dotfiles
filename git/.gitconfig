@@ -16,3 +16,6 @@
    br = branch
    co = checkout
    unstage = reset --hard HEAD
+
+[pull]
+	rebase = true
