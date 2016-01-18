@@ -1,6 +1,11 @@
 [include]
    path = ~/.gitconfig.local
 
+[user]
+   user = ggeise
+   name = Steve Champagne
+   email = champagst@gmail.com
+
 [core]
    excludesfile = ~/.gitignore_global
    editor = vim
