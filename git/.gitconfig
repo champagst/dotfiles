@@ -1,9 +1,5 @@
-[user]
-   name = Steve Champagne
-   email = champagst@gmail.com
-
-[github]
-   user = ggeise
+[include]
+   path = ~/.gitconfig.local
 
 [core]
    excludesfile = ~/.gitignore_global
