@@ -17,6 +17,12 @@
    br = branch
    co = checkout
    unstage = reset --hard HEAD
+   la = log --oneline --all --decorate --graph
+   las = !git --no-pager log --oneline --all --decorate --graph -40
+   lass = !git --no-pager log --oneline --all --decorate --graph -10
+   lb = log --oneline --decorate --graph
+   lbs = !git --no-pager log --oneline --decorate --graph -40
+   lbss = !git --no-pager log --oneline --decorate --graph -10
 
 [pull]
 	rebase = true

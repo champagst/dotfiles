@@ -5,6 +5,7 @@ set encoding=utf-8		" Use unicode
 set laststatus=2		" Always display the status line
 set hidden			" Hide buffer instead of closing it
 set relativenumber		" Show relative line numbers on the side
+set number                       " Show the line we are on
 set backspace=indent,eol,start	" Allow backspace in insert mode
 set history=1000		" Store more history
 set ttyfast			" Faster scrolling
@@ -81,6 +82,17 @@ filetype plugin indent on
 nmap <leader>n :NERDTreeToggle<cr>
 let NERDTreeShowHidden=1
 
-" CtrlP
+" Fugitive
 
-nmap <leader>m :CtrlP<cr>
+nnoremap <leader>ga :Git add %:p<cr><cr>
+nnoremap <leader>gaa :Git add --all<cr><cr>
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gc :Gcommit -v -q<cr>
+nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gh :Glog<cr>:bot copen<cr>
+nnoremap <leader>gH :Glog<cr>:set nofoldenable<cr>
+nnoremap <leader>gps :Git push<cr>
+nnoremap <leader>gpl :Git pull<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>g- :Git stash<cr>:e<cr>
+nnoremap <leader>g+ :Git stash pop<cr>:e<cr>
