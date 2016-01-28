@@ -12,6 +12,7 @@
 
 [alias]
    aa = add --all
+   fr = !git add --all && git commit
    st = status
    ci = commit
    br = branch
