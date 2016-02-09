@@ -15,15 +15,18 @@
    fr = !git add --all && git commit
    st = status
    ci = commit
+   ri = rebase -i @{u}
    br = branch
    co = checkout
    unstage = reset --hard HEAD
-   la = log --oneline --all --decorate --graph
-   las = !git --no-pager log --oneline --all --decorate --graph -40
-   lass = !git --no-pager log --oneline --all --decorate --graph -10
-   lb = log --oneline --decorate --graph
-   lbs = !git --no-pager log --oneline --decorate --graph -40
-   lbss = !git --no-pager log --oneline --decorate --graph -10
+   lg = log --no-merges
+   la = log --no-merges --oneline --all --decorate --graph
+   las = !git --no-pager log --no-merges --oneline --all --decorate --graph -40
+   lass = !git --no-pager log --no-merges --oneline --all --decorate --graph -10
+   lb = log --no-merges --oneline --decorate --graph
+   lbs = !git --no-pager log --no-merges --oneline --decorate --graph -40
+   lbss = !git --no-pager log --no-merges --oneline --decorate --graph -10
+   mine = !git log --no-merges --stat --author="Steve" --name-only --pretty=format:"" | sort -u
 
 [pull]
 	rebase = true
