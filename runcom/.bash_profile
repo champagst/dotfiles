@@ -27,6 +27,10 @@ done
 
 [ -f "$HOME/.bash_profile.local" ] && . "$HOME/.bash_profile.local"
 
+# Set LSCOLORS
+
+eval "$(dircolors "$DOTFILES_DIR"/system/.dir_colors)"
+
 # Clean up
 
 unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
