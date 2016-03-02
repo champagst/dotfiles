@@ -85,17 +85,24 @@ bash_prompt_command() {
     # Parse Git branch name
     P_GIT=$(parse_git_branch)
 
+    # Parse VirtualEnv path
+    P_VENV=$(parse_venv)
+
     # Exit code
     if [[ $EXIT_CODE != 0 ]]; then
         P_EXIT+="${P_RED}✘ "
     fi
 
-    PS1="${P_EXIT}${P_USER}${P_WHITE}@${P_HOST} ${P_YELLOW}${P_PWD}${P_GREEN}${P_GIT}${P_YELLOW} ❯ ${P_RESET}"
+    PS1="${P_EXIT}${P_USER}${P_WHITE}@${P_HOST} ${P_YELLOW}${P_PWD}${P_GREEN}${P_GIT}${P_GREEN}${P_VENV}${P_YELLOW} ❯ ${P_RESET}"
 }
 
 parse_git_branch() {
     local OUT=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
     if [ "$OUT" != "" ]; then echo " $OUT"; fi
+}
+
+parse_venv() {
+   if [ "$VIRTUAL_ENV" != "" ]; then echo " (${VIRTUAL_ENV##*/})"; fi
 }
 
 _bash_prompt_config
