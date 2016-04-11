@@ -2,6 +2,7 @@
 
 alias g="git"
 alias v="vim"
+alias p="python"
 alias rr="rm -rf"
 
 # List declared aliases, functions
