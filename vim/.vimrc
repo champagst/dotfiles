@@ -1,17 +1,17 @@
 " General
 
 set nocompatible
-set encoding=utf-8		" Use unicode
-set laststatus=2		" Always display the status line
-set hidden			" Hide buffer instead of closing it
-set relativenumber		" Show relative line numbers on the side
+set encoding=utf-8		         " Use unicode
+set laststatus=2		            " Always display the status line
+set hidden			               " Hide buffer instead of closing it
+set relativenumber		         " Show relative line numbers on the side
 set number                       " Show the line we are on
 set backspace=indent,eol,start	" Allow backspace in insert mode
-set history=1000		" Store more history
-set ttyfast			" Faster scrolling
-set visualbell			" No sounds
-set autoread			" Reload files changed outside vim
-set whichwrap+=h,l,<,>		" Add more keys that can move between lines
+set history=1000		            " Store more history
+set ttyfast			               " Faster scrolling
+set visualbell			            " No sounds
+set autoread			            " Reload files changed outside vim
+set whichwrap+=h,l,<,>		      " Add more keys that can move between lines
 
 " Key mappings
 
@@ -182,3 +182,7 @@ function! SetArrowKeysAsTextShifters()
 endfunction 
 
 call SetArrowKeysAsTextShifters()
+
+" Move by virtual lines instead of physical lines
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
