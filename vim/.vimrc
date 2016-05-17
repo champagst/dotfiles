@@ -98,6 +98,7 @@ nnoremap <leader>g- :Git stash<cr>:e<cr>
 nnoremap <leader>g+ :Git stash pop<cr>:e<cr>
 
 " Remap arrow keys to be text movement keys
+" http://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/
 
 function! DelEmptyLineAbove() 
    if line(".") == 1 
@@ -186,3 +187,22 @@ call SetArrowKeysAsTextShifters()
 " Move by virtual lines instead of physical lines
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
+" Quickly select the text that was just pasted. This allows you to, e.g.,
+" indent it after pasting.
+noremap gV `[v`]
+
+" Stay in visual mode when indenting. You will never have to run gv after
+" performing an indentation.
+vnoremap < <gv
+vnoremap > >gv
+
+" Make Y yank everything from the cursor to the end of the line. This makes Y
+" act more like C or D because by default, Y yanks the current line (i.e. the
+" same as yy).
+noremap Y y$
+
+" Make Ctrl-e jump to the end of the current line in the insert mode. This is
+" handy when you are in the middle of a line and would like to go to its end
+" without switching to the normal mode.
+inoremap <C-e> <C-o>$
