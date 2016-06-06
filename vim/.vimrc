@@ -50,6 +50,7 @@ set shiftwidth=3
 set softtabstop=3
 set tabstop=3
 set expandtab
+set shiftround
 
 " Search
 
@@ -59,6 +60,11 @@ set showmatch
 set hlsearch
 
 noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
+
+" Use sane regexes
+
+nnoremap / /\v
+vnoremap / /\v
 
 " Buffers
 
@@ -79,7 +85,9 @@ filetype plugin indent on
 
 " NERDTree
 
-nmap <leader>n :NERDTreeToggle<cr>
+noremap <F5> :NERDTreeToggle<cr>
+inoremap <F5> <esc>:NERDTreeToggle<cr>
+
 let NERDTreeShowHidden=1
 
 " Fugitive
@@ -97,92 +105,41 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>g- :Git stash<cr>:e<cr>
 nnoremap <leader>g+ :Git stash pop<cr>:e<cr>
 
-" Remap arrow keys to be text movement keys
 " http://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/
 
-function! DelEmptyLineAbove() 
-   if line(".") == 1 
-      return 
-   endif 
-   let l:line = getline(line(".") - 1) 
-   if l:line =~ '^s*$' 
-      let l:colsave = col(".") 
-      .-1d 
-      silent normal! <C-y> 
-      call cursor(line("."), l:colsave) 
-   endif 
-endfunction 
+function! DelEmptyLineAbove()
+   if line(".") == 1
+      return
+   endif
+   let l:line = getline(line(".") - 1)
+   if l:line =~ '^s*$'
+      let l:colsave = col(".")
+      .-1d
+      silent normal! <c-y>
+      call cursor(line("."), l:colsave)
+   endif
+endfunction
 
-function! AddEmptyLineAbove() 
-   let l:scrolloffsave = &scrolloff 
-   " Avoid jerky scrolling with ^E at top of window 
-   set scrolloff=0 
-   call append(line(".") - 1, "") 
-   if winline() != winheight(0) 
-      silent normal! <C-e> 
-   endif 
-   let &scrolloff = l:scrolloffsave 
-endfunction 
+function! AddEmptyLineAbove()
+   let l:scrolloffsave = &scrolloff
+   " Avoid jerky scrolling with ^E at top of window
+   set scrolloff=0
+   call append(line(".") - 1, "")
+   if winline() != winheight(0)
+      silent normal! <c-e>
+   endif
+   let &scrolloff = l:scrolloffsave
+endfunction
 
-function! DelEmptyLineBelow() 
-   if line(".") == line("$") 
-      return 
-   endif 
-   let l:line = getline(line(".") + 1) 
-   if l:line =~ '^s*$' 
-      let l:colsave = col(".") 
-      .+1d 
-      '' 
-      call cursor(line("."), l:colsave) 
-   endif 
-endfunction 
+nnoremap <silent> <left> <<
+nnoremap <silent> <right> >>
+nnoremap <silent> <up> <esc>:call DelEmptyLineAbove()<cr>
+nnoremap <silent> <down> <esc>:call AddEmptyLineAbove()<cr>
 
-function! AddEmptyLineBelow() 
-   call append(line("."), "") 
-endfunction 
-
-" Arrow key remapping: Up/Dn = move line up/dn; Left/Right = indent/unindent 
-function! SetArrowKeysAsTextShifters() 
-   " normal mode 
-   nmap <silent> <Left> << 
-   nmap <silent> <Right> >> 
-   nnoremap <silent> <Up> <Esc> :call DelEmptyLineAbove()<CR> 
-   nnoremap <silent> <Down> <Esc>:call AddEmptyLineAbove()<CR> 
-   nnoremap <silent> <C-Up> <Esc>:call DelEmptyLineBelow()<CR> 
-   nnoremap <silent> <C-Down> <Esc>:call AddEmptyLineBelow()<CR> 
-   
-   " visual mode 
-   vmap <silent> <Left> < 
-   vmap <silent> <Right> > 
-   vnoremap <silent> <Up> <Esc>:call DelEmptyLineAbove()<CR>gv 
-   vnoremap <silent> <Down> <Esc>:call AddEmptyLineAbove()<CR>gv 
-   vnoremap <silent> <C-Up> <Esc>:call DelEmptyLineBelow()<CR>gv 
-   vnoremap <silent> <C-Down> <Esc>:call AddEmptyLineBelow()<CR>gv 
-   
-   " insert mode 
-   imap <silent> <Left> <C-D> 
-   imap <silent> <Right> <C-T> 
-   inoremap <silent> <Up> <Esc>:call DelEmptyLineAbove()<CR>a 
-   inoremap <silent> <Down> <Esc>:call AddEmptyLineAbove()<CR>a 
-   inoremap <silent> <C-Up> <Esc>:call DelEmptyLineBelow()<CR>a 
-   inoremap <silent> <C-Down> <Esc>:call AddEmptyLineBelow()<CR>a 
-   
-   " disable modified versions we are not using 
-   nnoremap <S-Up>    <NOP> 
-   nnoremap <S-Down>  <NOP> 
-   nnoremap <S-Left>  <NOP> 
-   nnoremap <S-Right> <NOP> 
-   vnoremap <S-Up>    <NOP> 
-   vnoremap <S-Down>  <NOP> 
-   vnoremap <S-Left>  <NOP> 
-   vnoremap <S-Right> <NOP> 
-   inoremap <S-Up>    <NOP> 
-   inoremap <S-Down>  <NOP> 
-   inoremap <S-Left>  <NOP> 
-   inoremap <S-Right> <NOP> 
-endfunction 
-
-call SetArrowKeysAsTextShifters()
+vnoremap <silent> <left> <
+vnoremap <silent> <right> >
+vnoremap <silent> <up> <esc>:call DelEmptyLineAbove()<cr>gv
+vnoremap <silent> <down> <esc>:call AddEmptyLineAbove()<cr>gv
 
 " Move by virtual lines instead of physical lines
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
@@ -206,3 +163,15 @@ noremap Y y$
 " handy when you are in the middle of a line and would like to go to its end
 " without switching to the normal mode.
 inoremap <C-e> <C-o>$
+
+" Use jk to exit insert mode
+inoremap jk <esc>
+inoremap <esc> <nop>
+
+nnoremap H 0
+nnoremap L $
+nnoremap 0 <nop>
+nnoremap $ <nop>
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
