@@ -29,7 +29,9 @@ done
 
 # Set LSCOLORS
 
-eval "$(dircolors "$DOTFILES_DIR"/system/.dir_colors)"
+if type dircolors >/dev/null 2>&1; then
+   eval "$(dircolors "$DOTFILES_DIR"/system/.dir_colors)"
+fi
 
 # Clean up
 
