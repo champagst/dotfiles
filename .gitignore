@@ -1,1 +1,6 @@
-/vim/tmp
+vim/tmp
+.weechat/logs
+.weechat/weechat.log
+.weechat/irc.conf
+.weechat/script/plugins.xml.gz
+.weechat/sec.conf
