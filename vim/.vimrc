@@ -16,6 +16,7 @@ set whichwrap+=h,l,<,>		      " Add more keys that can move between lines
 " Key mappings
 
 let mapleader = ","
+let maplocalleader = "\\"
 
 " Load plugins
 
@@ -104,6 +105,23 @@ nnoremap <leader>gpl :Git pull<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>g- :Git stash<cr>:e<cr>
 nnoremap <leader>g+ :Git stash pop<cr>:e<cr>
+
+" Markdown
+
+augroup ft_markdown
+   au!
+
+   au BufNewFile,BufRead *.m*down setlocal filetype=markdown foldlevel=1
+
+   " Use <localleader>1/2/3 to add headings.
+
+   au Filetype markdown nnoremap <buffer> <localleader>1 yypVr=:redraw<cr>
+   au Filetype markdown nnoremap <buffer> <localleader>2 yypVr-:redraw<cr>
+   au Filetype markdown nnoremap <buffer> <localleader>3 mzI###<space><esc>`zllll
+   au Filetype markdown nnoremap <buffer> <localleader>4 mzI####<space><esc>`zlllll
+   au Filetype markdown nnoremap <buffer> <localleader>5 mzI#####<space><esc>`zllllll
+   au Filetype markdown nnoremap <buffer> <localleader>6 mzI######<space><esc>`zlllllll
+augroup END
 
 " http://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/
 
