@@ -121,7 +121,7 @@ augroup ft_markdown
    au Filetype markdown nnoremap <buffer> <localleader>4 mzI####<space><esc>`zlllll
    au Filetype markdown nnoremap <buffer> <localleader>5 mzI#####<space><esc>`zllllll
    au Filetype markdown nnoremap <buffer> <localleader>6 mzI######<space><esc>`zlllllll
-   au Filetype markdown nnoremap <buffer> <localleader>c o```<cr>```<esc>O
+   au Filetype markdown nnoremap <buffer> <localleader>c o```<esc>yypO
 augroup END
 
 " http://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/
