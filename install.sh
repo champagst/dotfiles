@@ -17,6 +17,7 @@ ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" ~
 ln -sfv "$DOTFILES_DIR/vim/.vimrc" ~
 ln -sfv "$DOTFILES_DIR/.weechat" ~
+ln -sv "$DOTFILES_DIR/.emacs.d" ~
 
 if [ "$(uname)" == "Darwin" ]; then
 	ln -sfv "$DOTFILES_DIR/pentadactyl/.pentadactylrc" ~
