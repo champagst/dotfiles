@@ -105,6 +105,7 @@ nnoremap <leader>gpl :Git pull<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>g- :Git stash<cr>:e<cr>
 nnoremap <leader>g+ :Git stash pop<cr>:e<cr>
+set diffopt+=iwhite
 
 " Markdown
 
